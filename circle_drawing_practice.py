@@ -1,3 +1,5 @@
+# This is a simple pygame app that will allow the creation of randomly colored circles.
+
 import pygame
 import math
 import random
@@ -19,7 +21,12 @@ clear_screen = False
     # Draws a circle
 def drawCircle():
     print("Drawing a new circle at (x: " + str(mouse_x) + ", y: " + str(mouse_y) + ")")
+    
     pygame.draw.circle(screen, randomColor(), [mouse_x, mouse_y], 40)
+
+
+def getNewRange():
+    
 
     # Clears the screen by filling it black
 def clearScreen():
