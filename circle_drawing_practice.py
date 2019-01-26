@@ -3,14 +3,25 @@
 import pygame
 import math
 import random
+
+#Initialized pygame
 pygame.init()
 
 # Makes mouse_x and mouse_y into global variables
 global mouse_x, mouse_y
 
-# Sets up the initial screen
+# Sets up the initial screen to a resolution of 720 by 480
 screen = pygame.display.set_mode((720, 480))
 clock = pygame.time.Clock()
+
+# Sets up the color white in R G B format
+# 
+# 0-255 Red, 0-255 Green, 0-255 Blue
+# (0, 0, 0) is black
+# (255, 255, 255) is white
+# (255, 0, 0) is red
+# (0, 255, 255) is cyan
+
 WHITE = (  255,   255,   255)
 
 run_update = False
@@ -53,8 +64,11 @@ def randomColor():
     print("RGB Color: " + str(tuple))
 
     # + About this code
-    # The 02 portion formats the numbers (0 through 255) as 2 digits with
-    # a 0 at the front to pad it -- aka "hex" format
+    # The '#' is a literal character -- it just gets printed out
+    #
+    # The '02' portion formats the numbers 0 through 255 as two digits
+    # with a 0 at the front to pad it -- aka "hex" format
+    #
     # The 'x' portion means lower-case
     # You could also use 'X' for upper-case
     #
@@ -68,8 +82,11 @@ def randomColor():
     return tuple
 
 
+# + Our Main Loop
 while(updating):
     clock.tick(60)
+
+    # Pygame will listen for various events while we're in this main loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -79,6 +96,9 @@ while(updating):
             # In Pygame, you can access the left & right click of the mouse
             # separately. In this case, button 1 is for left click and 3 is for
             # right click.
+            #
+            # In this case, we can draw a new circle with left click, and
+            # then clear the screen with right click
             
             if event.button == 1:
                 mouse_x, mouse_y = pygame.mouse.get_pos()
