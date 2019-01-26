@@ -25,20 +25,20 @@ def drawCircle():
     pygame.draw.circle(screen, randomColor(), [mouse_x, mouse_y], 40)
 
 
-def getNewRange():
-    
+
 
     # Clears the screen by filling it black
 def clearScreen():
     print("Clearing the screen.")
     screen.fill((0, 0, 0))
 
-
+    # + Hexademical is base 16 (as opposed to base 10, our everyday decimal system)
+    #
     # + How to convert RGB tuple to hexadecimal:
     # https://stackoverflow.com/questions/3380726/converting-a-rgb-color-tuple-to-a-six-digit-code-in-python
     # + HTML color picker:
     # https://www.w3schools.com/colors/colors_picker.asp
-    
+    #
     # The function randomColor makes use of the randint() function
     # This allows us to pick a random number between 0 and 255
 
@@ -52,7 +52,17 @@ def randomColor():
     tuple = (r, g, b)  
     print("RGB Color: " + str(tuple))
 
-    hex = '#%02x%02x%02x' % (r, g, b)
+    # + About this code
+    # The 02 portion formats the numbers (0 through 255) as 2 digits with
+    # a 0 at the front to pad it -- aka "hex" format
+    # The 'x' portion means lower-case
+    # You could also use 'X' for upper-case
+    #
+    # See also:
+    # https://stackoverflow.com/questions/14678132/python-hexadecimal
+    # https://docs.python.org/2/library/string.html#formatspec
+    
+    hex = '#%02X%02X%02X' % (r, g, b)
     print("Hexadecimal: " + hex)
     
     return tuple
