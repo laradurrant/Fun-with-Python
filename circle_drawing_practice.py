@@ -60,7 +60,7 @@ def randomColor():
     #
     # See also:
     # https://stackoverflow.com/questions/14678132/python-hexadecimal
-    # https://docs.python.org/2/library/string.html#formatspec
+    # https://docs.python.org/3.6/library/string.html#formatspec
     
     hex = '#%02X%02X%02X' % (r, g, b)
     print("Hexadecimal: " + hex)
