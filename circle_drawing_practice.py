@@ -1,8 +1,12 @@
 import pygame
 import math
+import random
 pygame.init()
 
+# Makes mouse_x and mouse_y into global variables
 global mouse_x, mouse_y
+
+# Sets up the initial screen
 screen = pygame.display.set_mode((720, 480))
 clock = pygame.time.Clock()
 WHITE = (  255,   255,   255)
@@ -12,15 +16,40 @@ updating = True
 draw_circle = False
 clear_screen = False
 
+    # Draws a circle
 def drawCircle():
     print("Drawing a new circle at (x: " + str(mouse_x) + ", y: " + str(mouse_y) + ")")
-    pygame.draw.circle(screen, WHITE, [mouse_x, mouse_y], 40)
+    pygame.draw.circle(screen, randomColor(), [mouse_x, mouse_y], 40)
 
+    # Clears the screen by filling it black
 def clearScreen():
     print("Clearing the screen.")
     screen.fill((0, 0, 0))
 
+
+    # + How to convert RGB tuple to hexadecimal:
+    # https://stackoverflow.com/questions/3380726/converting-a-rgb-color-tuple-to-a-six-digit-code-in-python
+    # + HTML color picker:
+    # https://www.w3schools.com/colors/colors_picker.asp
     
+    # The function randomColor makes use of the randint() function
+    # This allows us to pick a random number between 0 and 255
+
+def randomColor():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+
+    # + About Tuples:
+    # https://www.w3schools.com/python/python_tuples.asp
+    tuple = (r, g, b)  
+    print("RGB Color: " + str(tuple))
+
+    hex = '#%02x%02x%02x' % (r, g, b)
+    print("Hexadecimal: " + hex)
+    
+    return tuple
+
 
 while(updating):
     clock.tick(60)
@@ -29,6 +58,11 @@ while(updating):
             pygame.quit()
             quit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
+
+            # In Pygame, you can access the left & right click of the mouse
+            # separately. In this case, button 1 is for left click and 3 is for
+            # right click.
+            
             if event.button == 1:
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 draw_circle = True
@@ -36,6 +70,10 @@ while(updating):
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 clear_screen = True
                 
+    # Part of our main loop. If either variable clear_screen or draw_circle
+    # are set as true during a MOUSE BUTTON DOWN event (a 'click'), then
+    # we will either clear the screen or draw a circle, depending on the type
+    # of input that we received.
                 
     if(clear_screen):
         clearScreen()
@@ -46,6 +84,9 @@ while(updating):
         drawCircle()
         draw_circle = False
 
-    pygame.display.flip()
-    
+    # Update the full display Surface to the screen
+    #pygame.display.flip()
+
+    # Slightly more 'optimized' version of display.flip()
+    # Also updates the screen
     pygame.display.update()
