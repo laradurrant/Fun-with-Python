@@ -1,5 +1,3 @@
-# some practice with python for a student
-
 # This function says "hello"
 def say_hello():
   print "hello"
@@ -60,9 +58,12 @@ def get_uppercase(string):
   for letter in string:
     if letter.isupper():
       print("fizz")
-    else:
+    elif letter.islower():
       print("bang")
+    else:
+      print("banana")
     
+  
 say_hello()
 
 add_new_line()    
@@ -91,4 +92,4 @@ get_numbers_per_letter_one_line_alt("hello")
 
 add_new_line()
 
-get_uppercase("HelLo")
+get_uppercase("HelLo!!")
