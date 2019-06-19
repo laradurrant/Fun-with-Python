@@ -11,6 +11,10 @@ def get_letters(string):
   for letter in string:
     print letter
     
+# This function adds some letters at the end of the variable "string"
+def add_letters(string):
+  string += " new letters!"
+  print string
   
 # This function will create a variable new_word and copy each letter from "string"
 # into the new_word. At the end, it will print new_word.
@@ -69,6 +73,10 @@ say_hello()
 add_new_line()    
 
 get_letters("hello")
+
+add_new_line()
+
+add_letters("hello")
 
 add_new_line()
 
