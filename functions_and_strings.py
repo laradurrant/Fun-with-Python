@@ -28,7 +28,7 @@ def get_letters_one_line(string):
 # This function will print the length of the variable "string"
 # In this example we use "hello" so the answer is 5. 
 def get_word_length(string):
-  print "Total number of words in " + string + " is: "
+  print "Total number of letters (including whitespace) in " + string + " is: "
   print len(string)
 
 # This function will print the number of each letter in our variable "string"
